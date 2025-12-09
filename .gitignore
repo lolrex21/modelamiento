@@ -50,7 +50,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 ./marketplace/client/node_modules
-./marketplace/client/package-lock.json
+#./marketplace/client/package-lock.json
 
 ./marketplace/server/node_modules
-./marketplace/server/package-lock.json
+#./marketplace/server/package-lock.json

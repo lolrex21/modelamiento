@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const router = Router();
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
 const isValidEmail = (email = "") => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -31,25 +32,32 @@ function signToken(user) {
 router.post("/register", async (req, res) => {
   try {
     const { name, password, role } = req.body || {};
-    // --- CORRECCIÓN: Limpiamos el email al recibirlo ---
-    const email = String(req.body.email || '').trim().toLowerCase(); 
+    const email = String(req.body.email || "").trim().toLowerCase();
 
-    console.log("\n[DEBUG] /register: Recibido", { name, email, password: '***', role });
+    console.log("\n[DEBUG] /register: Recibido", {
+      name,
+      email,
+      password: "***",
+      role,
+    });
 
+    // 1) Validaciones básicas
     if (!name || !email || !password) {
       console.log("[DEBUG] /register: Faltan campos");
       return res.status(400).json({ error: "Faltan campos" });
     }
+
     if (!isValidEmail(email)) {
-      return res.status(400).json({ message: "Correo electrónico no válido." });
+      return res
+        .status(400)
+        .json({ error: "Correo electrónico no válido." });
     }
 
-    // Validar que el rol sea válido (si se proporciona)
-    // buyer = vendedor, user = cliente, moderator = moderador, admin = admin
-    const validRoles = ['user', 'buyer', 'moderator', 'admin'];
-    const userRole = role && validRoles.includes(role) ? role : 'user';
+    // 2) Validar rol
+    const validRoles = ["user", "buyer", "moderator", "admin"];
+    const userRole = role && validRoles.includes(role) ? role : "user";
 
-    // 1) validar email repetido con Supabase
+    // 3) Verificar si ya existe en tu tabla users
     const { data: existingUser, error: existsError } = await supabase
       .from("users")
       .select("id")
@@ -57,42 +65,81 @@ router.post("/register", async (req, res) => {
       .maybeSingle();
 
     if (existsError) {
-      console.error("[DEBUG] /register: Error al verificar email:", existsError);
+      console.error(
+        "[DEBUG] /register: Error al verificar email en users:",
+        existsError
+      );
       return res.status(500).json({ error: "Error en el registro" });
     }
 
     if (existingUser) {
-      console.log("[DEBUG] /register: El email ya existe");
-      return res.status(409).json({ error: "El email ya está registrado" });
+      console.log("[DEBUG] /register: El email ya existe en users");
+      return res
+        .status(409)
+        .json({ error: "El email ya está registrado" });
     }
 
-    // 2) hashear contraseña
+    // 4) Registrar en Supabase Auth (esto dispara el correo de confirmación)
+    const { data: signUpData, error: signUpError } =
+      await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          // datos extra opcionales que se guardan en auth.users.user_metadata
+          data: {
+            name,
+            role: userRole,
+          },
+          // URL a la que Supabase redirige después de que el usuario hace clic en el correo
+          emailRedirectTo: `${FRONTEND_URL}`,
+        },
+      });
+
+    if (signUpError) {
+      console.error("[DEBUG] /register: Error en supabase.auth.signUp:", signUpError);
+      // Si el correo ya existe en auth.users, normalmente devuelve error tipo "User already registered"
+      return res.status(400).json({ error: signUpError.message });
+    }
+
+    const authUser = signUpData.user;
+    console.log("[DEBUG] /register: Usuario creado en Auth:", authUser?.id);
+
+    // 5) Hashear la contraseña para tu propia tabla (opcional, puedes no guardarla)
     const hash = await bcrypt.hash(password, 10);
     console.log("[DEBUG] /register: Hash de contraseña creado");
 
-    // Inserta sin especificar ID, deja que Supabase lo auto-asigne
+    // 6) Insertar en tu tabla users (status = 'inactive')
+    // ajusta columnas según tu esquema (ej: auth_user_id si tienes FK a auth.users.id)
     const { data: inserted, error: insertError } = await supabase
-      .from('users')
-      .insert([{ 
-        name, 
-        email, 
-        password_hash: hash,
-        role: userRole,        // Usa el rol especificado o 'buyer' por defecto
-        status: 'inactive'       
-      }])
-      .select('id, name, email, created_at, role, status');
+      .from("users")
+      .insert([
+        {
+          name,
+          email,
+          password_hash: hash,
+          role: userRole,
+          status: "inactive",
+        },
+      ])
+      .select("id, name, email, created_at, role, status")
+      .single();
 
-    if (insertError) throw insertError;
-    
-    const user = inserted[0];
-    const token = signToken(user);
+    if (insertError) {
+      console.error("[DEBUG] /register: Error al insertar en users:", insertError);
+      return res.status(500).json({ error: "Error en el registro" });
+    }
 
     console.log(
-      "[DEBUG] /register: Usuario registrado con éxito. ID:",
-      user.id
+      "[DEBUG] /register: Usuario registrado con éxito en users. ID:",
+      inserted.id
     );
-    const { password_hash, ...userResponse } = user;
-    res.json({ token, user: userResponse });
+
+    // 7) En lugar de loguearlo, avisas que revise su correo
+    return res.status(201).json({
+      message:
+        "Registro exitoso. Revisa tu correo para confirmar tu cuenta antes de iniciar sesión.",
+      user: inserted,
+    });
   } catch (err) {
     console.error("[DEBUG] /register: Error 500", err);
     res.status(500).json({ error: "Error en el registro" });

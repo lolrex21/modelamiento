@@ -1,5 +1,5 @@
 export const isModerator = (req, res, next) => {
-    if (req.userRole === 'moderator' || req.userRole === 'admin') {
+    if (req.userRole === 'moderator'|| req.userRole === 'user' || req.userRole === 'admin') {
         next();
     } else {
         res.status(403).json({ message: 'Acceso denegado. Se requiere rol de Moderador o Administrador.' });

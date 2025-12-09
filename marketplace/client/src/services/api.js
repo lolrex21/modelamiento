@@ -1,9 +1,11 @@
 // (Necesitarás instalar axios: npm install axios)
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
 // Creamos una instancia de axios
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api', // La URL de tu backend
+  baseURL: `${API_URL}/api`, // La URL de tu backend
   withCredentials: true, // Importante si usas cookies
 });
 

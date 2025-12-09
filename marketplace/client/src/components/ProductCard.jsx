@@ -68,17 +68,9 @@ export default function ProductCard({ product, onClick, refreshProducts, onEditP
   const handleToggleFavorite = async (e) => {
     e.stopPropagation(); // Evita que se abra el modal
     try {
-      // Usamos el helper 'api' de Axios, que ya incluye el token
-      // Alternativa con tu fetch:
-      // await fetch(`http://localhost:4000/api/products/${product.id}/favorite`, {
-      //   method: 'POST',
-      //   headers: getAuthHeaders()
-      // });
       
       await api.post(`/products/${product.id}/favorite`);
       
-      // Opcional: Feedback visual inmediato
-      // (Aquí podrías cambiar el color del botón, pero es más complejo)
       alert('¡Favorito actualizado!');
       
       // Si estamos en la página de Favoritos, refrescarla

@@ -5,6 +5,8 @@ import Helper from "../components/Helper";
 import { useAuth } from '../context/AuthContext'; // <--- ¡MUY IMPORTANTE!
 import loginImage from '../images/lpm1.png';
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +36,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:4000/api/auth/login", {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

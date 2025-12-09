@@ -161,7 +161,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 4000;
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 server.listen(PORT, () => {
-  console.log(`🚀 API + WebSocket escuchando en http://localhost:${PORT}`);
+  console.log(`🚀 API + WebSocket escuchando en ${API_URL}`);
 });

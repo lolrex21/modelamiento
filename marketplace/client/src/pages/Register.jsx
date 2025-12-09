@@ -4,6 +4,8 @@ import "./Register.css";
 import Helper from "../components/Helper";
 import { useAuth } from '../context/AuthContext';
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
 const Register = () => {
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");         // nombre
@@ -67,7 +69,7 @@ const Register = () => {
           role: role, // enviar tipo de cuenta al backend
         };
 
-        const res = await fetch("http://localhost:4000/api/auth/register", {
+        const res = await fetch(`${API_URL}/api/auth/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),

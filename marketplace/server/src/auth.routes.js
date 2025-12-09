@@ -78,7 +78,7 @@ router.post("/register", async (req, res) => {
         email, 
         password_hash: hash,
         role: userRole,        // Usa el rol especificado o 'buyer' por defecto
-        status: 'active'       // Status por defecto: active
+        status: 'inactive'       
       }])
       .select('id, name, email, created_at, role, status');
 

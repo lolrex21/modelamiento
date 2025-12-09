@@ -6,6 +6,8 @@ import ProductGrid from '../components/ProductGrid';
 import ProductDetailModal from '../components/ProductDetailModal';
 import './Home.css';
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
 function Home() {
     // ESTADOS
     const [products, setProducts] = useState([]);
@@ -37,7 +39,7 @@ function Home() {
         if (!window.confirm("¿Estás seguro de que quieres eliminar este producto?")) return;
 
         try {
-            const response = await fetch(`http://localhost:4000/api/products/${productId}`, {
+            const response = await fetch(`${API_URL}/api/products/${productId}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` },
             });

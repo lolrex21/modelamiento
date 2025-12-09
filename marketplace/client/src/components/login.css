@@ -1,24 +1,24 @@
 /* login.css - Diseño Elegante y Profesional */
 
 /* CSS general para el cuerpo */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   background: #ffffff;
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   position: relative;
 }
-
-  html, body, #root {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
 
 /* Contenedor principal - Layout 50/50 */
 .login-page {
@@ -30,8 +30,8 @@ body {
   flex-direction: row;
   position: relative;
   padding: 0;
-    margin: 0;
-  }
+  margin: 0;
+}
 
 /* Contenedor izquierdo - Formulario */
 .login-page-left {
@@ -259,7 +259,7 @@ body {
   text-decoration: none;
 }
 
-/* Mensajes de error */
+/* Mensajes de estado */
 .error-message {
   color: #C61A34;
   font-size: 13px;
@@ -322,84 +322,3 @@ body {
     display: none;
   }
 }
-  margin-top: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.forgot-password {
-  color: #2B55D6;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.forgot-password:hover {
-  color: #1a3aa0;
-  text-decoration: underline;
-}
-
-.signup-text {
-  color: #666666;
-  font-size: 14px;
-}
-
-.signup-link {
-  color: #2B55D6;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.signup-link:hover {
-  color: #1a3aa0;
-  text-decoration: underline;
-}
-
-/* Botón crear cuenta - En la esquina superior derecha */
-.create-account {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 14px;
-  background: #C61A34;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  z-index: 50;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(198, 26, 52, 0.2);
-}
-
-.create-account:hover {
-  background: #a01528;
-  box-shadow: 0 4px 12px rgba(198, 26, 52, 0.3);
-  text-decoration: none;
-}
-
-/* Mensajes de error */
-.error-message {
-  color: #C61A34;
-  font-size: 14px;
-  margin: 12px 0;
-  text-align: center;
-  font-weight: 500;
-}
-
-.success-message {
-  color: #4CAF50;
-  font-size: 14px;
-  margin: 12px 0;
-  text-align: center;
-  font-weight: 500;
-}
-
-
-
-

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
 import Helper from "../components/helper.jsx";
-import { useAuth } from '../context/AuthContext'; // <--- ¡MUY IMPORTANTE!
+import { useAuth } from '../context/AuthContext.jsx'; // <--- ¡MUY IMPORTANTE!
 import loginImage from '../images/lpm1.png';
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";

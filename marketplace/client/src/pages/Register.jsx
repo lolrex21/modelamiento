@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
-import Helper from "../components/Helper";
-import { useAuth } from '../context/AuthContext';
+import Helper from "../components/helper.jsx";
+import { useAuth } from '../context/AuthContext.jsx';
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 

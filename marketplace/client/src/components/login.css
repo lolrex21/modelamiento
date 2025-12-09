@@ -1,0 +1,405 @@
+/* login.css - Diseño Elegante y Profesional */
+
+/* CSS general para el cuerpo */
+body {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+/* Contenedor principal - Layout 50/50 */
+.login-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  flex-direction: row;
+  position: relative;
+  padding: 0;
+    margin: 0;
+  }
+
+/* Contenedor izquierdo - Formulario */
+.login-page-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: #ffffff;
+  position: relative;
+  z-index: 10;
+}
+
+/* Contenedor derecho - Robot e Imagen */
+.login-page-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #C61A34 0%, #a01528 100%);
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Imagen de fondo en la derecha */
+.login-background-image {
+  position: relative;
+  width: 70%;
+  height: auto;
+  max-height: 80vh;
+  max-width: 540px;
+  object-fit: contain;
+  opacity: 1;
+  display: block;
+  z-index: 5;
+  margin: 0 auto;
+}
+
+/* Contenedor del robot */
+.robot-wrapper {
+  position: absolute;
+  right: 32px;
+  bottom: 24px;
+  transform: none;
+  width: 200px;
+  height: 280px;
+  z-index: 15;
+}
+
+/* Contenedor del formulario de login */
+.login-container {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px;
+  background: #ffffff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 10;
+}
+
+/* Titulo del formulario */
+.login-title {
+  text-align: center;
+  font-size: 28px;
+  margin: 0 0 8px;
+  color: #000000;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.login-page .subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #999999;
+  margin: 0 0 28px;
+  font-weight: 400;
+}
+
+/* Estilo de los inputs */
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #000000;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: #f5f5f5;
+  color: #000000;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #C61A34;
+  box-shadow: 0 0 0 3px rgba(198, 26, 52, 0.08);
+}
+
+.input-group input::placeholder {
+  color: #999999;
+}
+
+/* Botón de ingresar */
+.login-button {
+  width: 100%;
+  height: 42px;
+  padding: 0;
+  background: #C61A34;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(198, 26, 52, 0.2);
+}
+
+.login-button:hover:not(:disabled) {
+  background: #a01528;
+  box-shadow: 0 4px 12px rgba(198, 26, 52, 0.3);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Recordar y Links */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.remember-forgot input {
+  margin-right: 6px;
+}
+
+.remember-forgot label {
+  color: #666666;
+  cursor: pointer;
+}
+
+/* Enlaces de abajo */
+.links {
+  margin-top: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.forgot-password {
+  color: #2B55D6;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.forgot-password:hover {
+  color: #1a3aa0;
+  text-decoration: underline;
+}
+
+.signup-text {
+  color: #666666;
+  font-size: 13px;
+}
+
+.signup-link {
+  color: #2B55D6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.signup-link:hover {
+  color: #1a3aa0;
+  text-decoration: underline;
+}
+
+/* Botón crear cuenta - En la esquina superior derecha */
+.create-account {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 13px;
+  background: #C61A34;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  z-index: 50;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(198, 26, 52, 0.2);
+}
+
+.create-account:hover {
+  background: #a01528;
+  box-shadow: 0 4px 12px rgba(198, 26, 52, 0.3);
+  text-decoration: none;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: #C61A34;
+  font-size: 13px;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.success-message {
+  color: #4CAF50;
+  font-size: 13px;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-page-left,
+  .login-page-right {
+    flex: 1;
+    min-height: 50vh;
+  }
+
+  .login-page-right {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .robot-wrapper {
+    display: none;
+  }
+
+  .login-container {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    max-width: 100%;
+    padding: 30px 20px;
+    border-radius: 0;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .create-account {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .robot-wrapper {
+    display: none;
+  }
+}
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.forgot-password {
+  color: #2B55D6;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.forgot-password:hover {
+  color: #1a3aa0;
+  text-decoration: underline;
+}
+
+.signup-text {
+  color: #666666;
+  font-size: 14px;
+}
+
+.signup-link {
+  color: #2B55D6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.signup-link:hover {
+  color: #1a3aa0;
+  text-decoration: underline;
+}
+
+/* Botón crear cuenta - En la esquina superior derecha */
+.create-account {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 14px;
+  background: #C61A34;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  z-index: 50;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(198, 26, 52, 0.2);
+}
+
+.create-account:hover {
+  background: #a01528;
+  box-shadow: 0 4px 12px rgba(198, 26, 52, 0.3);
+  text-decoration: none;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: #C61A34;
+  font-size: 14px;
+  margin: 12px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.success-message {
+  color: #4CAF50;
+  font-size: 14px;
+  margin: 12px 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+
+
+

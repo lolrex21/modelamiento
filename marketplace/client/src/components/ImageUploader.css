@@ -1,0 +1,169 @@
+/* ImageUploader.css - Diseño Premium */
+
+.image-uploader {
+  width: 100%;
+}
+
+.upload-area {
+  border: 2px dashed #d0d0d0;
+  border-radius: 6px;
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f9f9f9;
+}
+
+.upload-area:hover {
+  border-color: #C61A34;
+  background: rgba(198, 26, 52, 0.05);
+}
+
+.upload-area.drag-over {
+  border-color: #C61A34;
+  background: rgba(198, 26, 52, 0.1);
+}
+
+.upload-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+  color: #C61A34;
+}
+
+.upload-text {
+  margin: 0;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.upload-hint {
+  margin: 8px 0 0;
+  color: #999999;
+  font-size: 12px;
+}
+
+.upload-input {
+  display: none;
+}
+
+.upload-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: #C61A34;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(198, 26, 52, 0.2);
+}
+
+.upload-button:hover {
+  background: #a01528;
+  box-shadow: 0 4px 12px rgba(198, 26, 52, 0.3);
+}
+
+.upload-progress {
+  margin-top: 16px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #C61A34;
+  transition: width 0.3s ease;
+}
+
+.upload-status {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #999999;
+  font-weight: 500;
+}
+
+.image-list {
+  margin-top: 20px;
+}
+
+.image-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+}
+
+.image-item:hover {
+  background: #f0f0f0;
+}
+
+.image-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.image-info {
+  flex: 1;
+}
+
+.image-name {
+  margin: 0;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.image-size {
+  margin: 2px 0 0;
+  color: #999999;
+  font-size: 11px;
+}
+
+.image-remove {
+  background: #ffffff;
+  border: 1px solid rgba(198, 26, 52, 0.2);
+  color: #C61A34;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.image-remove:hover {
+  background: rgba(198, 26, 52, 0.08);
+  border-color: #C61A34;
+}
+
+.error-message {
+  color: #C61A34;
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.success-message {
+  color: #4CAF50;
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 500;
+}

@@ -1,0 +1,326 @@
+/* FilterBar.css - Diseño Premium */
+
+.filter-bar {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 24px 0 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.filter-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #C61A34;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  font-size: 12px;
+  color: #999999;
+  margin-bottom: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: #C61A34;
+  box-shadow: 0 0 0 3px rgba(198, 26, 52, 0.08);
+}
+
+.filter-group input::placeholder {
+  color: #999999;
+}
+
+/* Para LocationPicker dentro de FilterBar */
+.filter-group .location-picker-container {
+  box-shadow: none;
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+}
+
+.filter-group .location-map {
+  height: 350px;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.filter-btn-apply {
+  background: #C61A34;
+  color: white;
+  box-shadow: 0 2px 8px rgba(198, 26, 52, 0.2);
+}
+
+.filter-btn-apply:hover {
+  background: #a01528;
+  box-shadow: 0 4px 12px rgba(198, 26, 52, 0.3);
+}
+
+.filter-btn-reset {
+  background: #ffffff;
+  color: #2B55D6;
+  border: 1px solid #d0d0d0;
+}
+
+.filter-btn-reset:hover {
+  background: #f5f5f5;
+  border-color: #2B55D6;
+}
+
+/* Tablet - 768px y menores */
+@media (max-width: 768px) {
+  .filter-bar {
+    padding: 16px;
+  }
+
+  .filter-controls {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .filter-actions {
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .filter-group .location-map {
+    height: 300px;
+  }
+}
+
+/* Mobile - 480px y menores */
+@media (max-width: 480px) {
+  .filter-bar {
+    padding: 12px;
+    margin: 16px 0 24px;
+  }
+
+  .filter-controls {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .filter-actions {
+    flex-direction: column;
+  }
+
+  .filter-btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 12px;
+  }
+
+  .filter-group label {
+    font-size: 11px;
+  }
+
+  .filter-group input,
+  .filter-group select {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .filter-group .location-map {
+    height: 250px;
+  }
+}
+
+/* Modal del Mapa */
+.map-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.map-modal-container {
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  height: 85vh;
+  max-height: 700px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.map-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.map-modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #000000;
+  font-weight: 700;
+}
+
+.map-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666666;
+  transition: color 0.2s;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.map-modal-close:hover {
+  background: #f5f5f5;
+  color: #000000;
+}
+
+.map-modal-content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+.map-modal-content .location-picker-container {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-modal-content .location-map {
+  height: 100% !important;
+  min-height: 400px;
+  flex: 1;
+}
+
+.map-modal-content .location-search {
+  border-radius: 0;
+}
+
+.map-modal-content .location-info {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.map-modal-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.map-modal-footer .btn {
+  padding: 10px 20px;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+  .map-modal-container {
+    max-width: 95vw;
+    height: 90vh;
+    max-height: 600px;
+  }
+
+  .map-modal-header {
+    padding: 16px;
+  }
+
+  .map-modal-header h2 {
+    font-size: 18px;
+  }
+
+  .map-modal-footer {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-modal-overlay {
+    padding: 10px;
+  }
+
+  .map-modal-container {
+    max-width: 100vw;
+    height: 95vh;
+    max-height: 500px;
+    border-radius: 8px;
+  }
+
+  .map-modal-header h2 {
+    font-size: 16px;
+  }
+
+  .map-modal-close {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+
+  .map-modal-content .location-map {
+    min-height: 250px;
+  }
+}

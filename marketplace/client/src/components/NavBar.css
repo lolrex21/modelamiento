@@ -1,0 +1,111 @@
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 24px;
+  background: #ffffff;
+  color:#000000;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-logo a{ 
+  color: #C61A34; 
+  text-decoration:none; 
+  font-weight:700;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+.navbar-links{ 
+  display:flex; 
+  gap:24px; 
+  align-items:center;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Empuja el centro de notificaciones hacia la derecha para que el panel no quede tapado */
+.navbar-links .notification-center {
+  margin-left: auto;
+}
+
+.navbar-links a{ 
+  color:#666666; 
+  text-decoration:none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.navbar-links a:hover{ 
+  color: #C61A34;
+  background: #f0f0f0;
+}
+
+.user-menu{ 
+  position:relative;
+  margin-left: auto;
+}
+
+.user-button{ 
+  background:transparent; 
+  border:none; 
+  color:#666666; 
+  cursor:pointer;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.user-button:hover {
+  color: #C61A34;
+  background: #f0f0f0;
+}
+
+.user-dropdown{
+  position:absolute;
+  right:0;
+  top:44px;
+  background: #ffffff;
+  color:#000000;
+  border-radius:8px;
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+  min-width:200px;
+  padding:8px 0;
+  z-index:50;
+  border: 1px solid #e0e0e0;
+}
+
+.user-dropdown a, .user-dropdown button{
+  padding:12px 16px;
+  text-align:left;
+  background:transparent;
+  border:none;
+  width:100%;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.user-dropdown a:hover, .user-dropdown button:hover{ 
+  background:#f5f5f5;
+  color: #C61A34;
+}
+
+.logout-button{ 
+  color:#C61A34; 
+  cursor:pointer;
+}
+
+.logout-button:hover {
+  background: rgba(198, 26, 52, 0.08) !important;
+  color: #a01528 !important;
+}
+

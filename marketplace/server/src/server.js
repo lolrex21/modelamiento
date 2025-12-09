@@ -161,7 +161,3 @@ io.on("connection", (socket) => {
   });
 });
 
-
-server.listen(PORT, () => {
-  console.log(`🚀 API + WebSocket escuchando`);
-});

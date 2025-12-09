@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
-import Helper from "../components/Helper";
+import Helper from "../components/helper.jsx";
 import { useAuth } from '../context/AuthContext'; // <--- ¡MUY IMPORTANTE!
 import loginImage from '../images/lpm1.png';
 

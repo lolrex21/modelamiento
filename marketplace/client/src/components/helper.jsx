@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./Helper.css"; // Asegúrate de tener este archivo de estilos
+import "./helper.css"; // Asegúrate de tener este archivo de estilos
 
 const Helper = ({ message }) => {
   useEffect(() => {

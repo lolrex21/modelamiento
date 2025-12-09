@@ -15,12 +15,12 @@ import conversationRoutes from "./conversation.routes.js";
 import { supabase } from "./db.js";
 
 dotenv.config();
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+
 const app = express();
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
-console.log("pasamos el inicio")
+
 app.use('/api/auth', authRoutes);
 app.use("/api/chat", conversationRoutes);
 app.use('/api', productRoutes);
@@ -29,15 +29,15 @@ app.use('/api/admin', adminRoutes);
 app.get("/", (_req, res) => res.send("API OK"));
 
 const server = http.createServer(app);
-console.log("creamos rutas y http")
+
 const io = new Server(server, {
   cors: {
-    origin: FRONTEND_URL,
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
-console.log("creamos io con url de front")
+
 // función helper para generar un room único para 2 usuarios
 const getRoomId = (userA, userB) => {
   const ids = [String(userA), String(userB)].sort();
@@ -160,4 +160,8 @@ io.on("connection", (socket) => {
     console.log("❌ Cliente desconectado:", socket.id);
   });
 });
-console.log("terminamos")
+
+const PORT = process.env.PORT || 4000;
+server.listen(PORT, () => {
+  console.log(`🚀 API + WebSocket escuchando en http://localhost:${PORT}`);
+});

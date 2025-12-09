@@ -91,7 +91,7 @@ router.post("/register", async (req, res) => {
             role: userRole,
           },
           // URL a la que Supabase redirige después de que el usuario hace clic en el correo
-          emailRedirectTo: `${FRONTEND_URL}`,
+          emailRedirectTo: FRONTEND_URL,
         },
       });
 
@@ -215,8 +215,8 @@ router.post("/login", async (req, res) => {
 // Recuperación de contraseña
 import { forgotPassword, resetPassword } from './password.controller.js';
 
-router.post('/auth/forgot-password', forgotPassword);
-router.post('/auth/reset-password', resetPassword);
+router.post('/forgot-password', forgotPassword);
+router.post('/reset-password', resetPassword);
 
 /**
  * GET /api/auth/verify

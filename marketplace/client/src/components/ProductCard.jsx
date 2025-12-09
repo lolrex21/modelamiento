@@ -120,6 +120,7 @@ export default function ProductCard({ product, onClick, refreshProducts, onEditP
         <div className="product-footer">
           <span className="product-price">${priceDisplay}</span>
         </div>
+        <button onClick={(e) => handleModerate(e, 'suspendido')} className="product-action-btn danger">Reportar</button>
 
         {isAuthenticated && (
           <div className="product-actions">

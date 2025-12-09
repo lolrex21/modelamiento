@@ -160,3 +160,4 @@ io.on("connection", (socket) => {
     console.log("❌ Cliente desconectado:", socket.id);
   });
 });
+console.log("terminamos")
